@@ -1,0 +1,22 @@
+{
+  "name": "mcp-todo-server-ts",
+  "version": "0.1.0",
+  "description": "A simple Todo List MCP server in TypeScript",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node build/index.js",
+    "dev": "ts-node src/index.ts",
+    "inspector": "bunx @modelcontextprotocol/inspector bun run src/index.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "zod": "^3.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  }
+}
