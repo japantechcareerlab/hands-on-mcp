@@ -1,41 +1,40 @@
-"""
-FastMCP quickstart example.
-
-Run from the repository root:
-    uv run examples/snippets/servers/fastmcp_quickstart.py
-"""
-
 from mcp.server.fastmcp import FastMCP
+from src.types import TodoId, Title, Description, Completed
+from src.tools import add_todo as add_todo_impl, list_todos as list_todos_impl, complete_todo as complete_todo_impl
 
-# Create an MCP server
-mcp = FastMCP("Demo", json_response=True)
+# Create server instance
+mcp = FastMCP(name="mcp-todo-server-python")
+
+# Register Tools
+@mcp.tool(
+    title="Add Todo",
+)
+async def add_todo(
+    title: Title,
+    description: Description = ""
+) -> dict:
+    """Add a new todo item"""
+    return await add_todo_impl(title, description)
 
 
-# Add an addition tool
-@mcp.tool()
-def add(a: int, b: int) -> int:
-    """Add two numbers"""
-    return a + b
+@mcp.tool(
+    title="List Todos",
+)
+async def list_todos(
+    completed: Completed = False
+) -> dict:
+    """List all todos with optional filtering"""
+    return await list_todos_impl(completed)
 
 
-# Add a dynamic greeting resource
-@mcp.resource("greeting://{name}")
-def get_greeting(name: str) -> str:
-    """Get a personalized greeting"""
-    return f"Hello, {name}!"
-
-
-# Add a prompt
-@mcp.prompt()
-def greet_user(name: str, style: str = "friendly") -> str:
-    """Generate a greeting prompt"""
-    styles = {
-        "friendly": "Please write a warm, friendly greeting",
-        "formal": "Please write a formal, professional greeting",
-        "casual": "Please write a casual, relaxed greeting",
-    }
-
-    return f"{styles.get(style, styles['friendly'])} for someone named {name}."
+@mcp.tool(
+    title="Complete Todo",
+)
+async def complete_todo(
+    todo_id: TodoId
+) -> dict:
+    """Mark a todo as complete"""
+    return await complete_todo_impl(todo_id)
 
 
 # Run with streamable HTTP transport
