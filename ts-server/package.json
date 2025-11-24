@@ -5,13 +5,13 @@
   "type": "module",
   "main": "build/index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node build/index.js",
-    "dev": "ts-node src/index.ts",
+    "build": "bun build src/index.ts --outdir build --target node",
+    "start": "bun run build/index.js",
+    "dev": "bun run src/index.ts",
     "inspector": "bunx @modelcontextprotocol/inspector bun run src/index.ts"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^0.6.0",
+    "@modelcontextprotocol/sdk": "^1.22.0",
     "zod": "^3.22.0"
   },
   "devDependencies": {
