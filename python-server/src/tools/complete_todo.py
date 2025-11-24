@@ -1,25 +1,10 @@
 from ..types import todos
 
 
-async def complete_todo(todo_id: str) -> dict:
+async def complete_todo(todo_id: str) -> str:
     if todo_id not in todos:
-        return {
-            "content": [
-                {
-                    "type": "text",
-                    "text": f"Todo {todo_id} not found",
-                },
-            ],
-            "isError": True,
-        }
+        return f"Todo {todo_id} not found"
 
     todos[todo_id].completed = True
 
-    return {
-        "content": [
-            {
-                "type": "text",
-                "text": f"Completed todo: {todos[todo_id].title}",
-            },
-        ],
-    }
+    return f"Completed todo: {todos[todo_id].title}"

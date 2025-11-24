@@ -21,7 +21,7 @@ async def add_todo(
     title="List Todos",
 )
 async def list_todos(
-    completed: Completed = False
+    completed: Completed | None = None
 ) -> dict:
     """List all todos with optional filtering"""
     return await list_todos_impl(completed)
