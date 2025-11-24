@@ -6,7 +6,7 @@ help:
 	@echo "  make inspector  - Run with MCP inspector"
 
 install:
-	mise exec -- uv sync
+	uv sync
 
 inspector:
-	CLIENT_PORT=5174 SERVER_PORT=6278 mise exec -- bunx @modelcontextprotocol/inspector -- mcp run main.py
+	CLIENT_PORT=5174 SERVER_PORT=6278 bunx @modelcontextprotocol/inspector -- mcp run main.py
