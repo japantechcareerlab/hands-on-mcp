@@ -24,8 +24,8 @@ TypeScript와 공식 MCP SDK를 사용하여 구현한 간단한 Todo List MCP (
 # 의존성 설치
 bun install
 
-# 빌드
-bun run build
+# 또는 Makefile 사용
+make install
 ```
 
 ## 개발
@@ -33,20 +33,29 @@ bun run build
 ```bash
 # 개발 모드로 실행
 bun run dev
+# 또는
+make dev
 
 # 프로덕션 빌드
 bun run build
+# 또는
+make build
 
 # 프로덕션 서버 시작
 bun run start
+# 또는
+make start
 ```
 
 ## 테스트
 
-### MCP Inspector로 테스트
+### MCP Inspector로 테스트 (포트 5173)
 
 ```bash
 bun run inspector
+
+# 또는 Makefile 사용
+make inspector
 ```
 
 ### Claude Desktop과 함께 사용
