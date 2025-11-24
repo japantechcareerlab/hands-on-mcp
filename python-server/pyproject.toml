@@ -1,0 +1,9 @@
+[project]
+name = "mcp-todo-server-py"
+version = "0.1.0"
+description = "A simple Todo List MCP server in Python"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "mcp[cli]>=1.0.0",
+]
